@@ -53,7 +53,7 @@ ankit@slim:~/PySer/examples$ hexdump -C sample.txt
 Now, we read the same sample.txt created earlier by example.
 Run example2.py under examples directory. PySer deserializer reads the file and returns the original dict which was used to create sample.txt  
 
-### examples/example1.py
+### examples/example2.py
 ```console
 ankit@slim:~/PySer/examples$ python3 example2.py
 {'repo': 'PYSER', 'version': 1.0, 'is_working': True, 'description': 'Python library to (de)serialize dict to disk', 'publish_date': '30 May 2022'}
