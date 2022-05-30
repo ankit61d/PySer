@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "pyser"
+description = "pyser is a simple Python library to Serialize / Deserializer dict to disk"
+authors = ["Ankit Dahiya <ankitdahiya95@gmail.com>"]
+repository = "https://github.com/ankit61d/PySer"
+keywords = ["serializer", "deserializer"]
+
+
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
