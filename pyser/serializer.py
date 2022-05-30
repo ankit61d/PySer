@@ -44,4 +44,3 @@ def serializer(d):
                 return bytes_string
     else:
         return error_messages['InvalidInput']
-print(serializer({}))
