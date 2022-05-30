@@ -30,13 +30,13 @@ ankit@slim:~/PySer$ python3
 ```
 
 ## Writing to a File
-To check how pyser serializer writes dict to a file, run example1.py in tests.
+To check how pyser serializer writes dict to a file, run example1.py in examples.
 It creates a file named sample.txt in the same directory.
 We can hexdump this file in terminal to get idea of internal working.
-### tests/example1.py
+### examples/example1.py
 ```console
-ankit@slim:~/PySer/tests$ python3 example1.py
-ankit@slim:~/PySer/tests$ hexdump -C sample.txt
+ankit@slim:~/PySer/examples$ python3 example1.py
+ankit@slim:~/PySer/examples$ hexdump -C sample.txt
 00000000  72 65 70 6f 00 03 00 50  59 53 45 52 00 03 00 76  |repo...PYSER...v|
 00000010  65 72 73 69 6f 6e 00 03  00 31 2e 30 00 02 00 69  |ersion...1.0...i|
 00000020  73 5f 77 6f 72 6b 69 6e  67 00 03 00 54 72 75 65  |s_working...True|
@@ -51,11 +51,11 @@ ankit@slim:~/PySer/tests$ hexdump -C sample.txt
 
 ## Reading from a File
 Now, we read the same sample.txt created earlier by example.
-Run example2.py under tests directory. PySer deserializer reads the file and returns the original dict which was used to create sample.txt  
+Run example2.py under examples directory. PySer deserializer reads the file and returns the original dict which was used to create sample.txt  
 
-### tests/example1.py
+### examples/example1.py
 ```console
-ankit@slim:~/PySer/tests$ python3 example2.py
+ankit@slim:~/PySer/examples$ python3 example2.py
 {'repo': 'PYSER', 'version': 1.0, 'is_working': True, 'description': 'Python library to (de)serialize dict to disk', 'publish_date': '30 May 2022'}
 ```
 
