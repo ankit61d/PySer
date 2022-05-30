@@ -64,18 +64,18 @@ ankit@slim:~/PySer/examples$ python3 example2.py
 To run test for serializer function, navigate to tests/serializer & simply run:
 ```console
 ankit@slim:~/PySer/tests/serializer$ python3 test.py
-.....
+.......
 ----------------------------------------------------------------------
-Ran 5 tests in 0.000s
+Ran 7 tests in 0.000s
 
 OK
 ```
 Similarly, navigate to test/deserializer directory & run:
 ```console
 ankit@slim:~/PySer/tests/deserializer$ python3 test.py
-.....
+...
 ----------------------------------------------------------------------
-Ran 5 tests in 0.000s
+Ran 3 tests in 0.000s
 
 OK
 ```
