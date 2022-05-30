@@ -33,10 +33,31 @@ class TestSerializer(unittest.TestCase):
         self.assertEqual(serializer({True:1}), 'True\x00\x04\x001\x00\x01\x00')
 
     def test_serializer_str(self):
+        self.assertEqual(serializer({}), None)
         self.assertEqual(serializer({"mYsTriNG":"?"}), 'mYsTriNG\x00\x03\x00?\x00\x03\x00')
         self.assertEqual(serializer({"x1-?x":123}), 'x1-?x\x00\x03\x00123\x00\x01\x00')
         self.assertEqual(serializer({7.89:"ggw["}), '7.89\x00\x02\x00ggw[\x00\x03\x00')
         self.assertEqual(serializer({" ":" "}), ' \x00\x03\x00 \x00\x03\x00')
+
+    def test_serializer_invalid_input(self):
+        # AttributeError ## since serializer works only for dict
+        self.assertEqual(serializer("string_input"), error_messages['InvalidInput'])
+        self.assertEqual(serializer([1,2,"list_input"]),error_messages['InvalidInput'])
+        self.assertEqual(serializer({"set","input"}),error_messages['InvalidInput'])
+        self.assertEqual(serializer(786), error_messages['InvalidInput'])
+        self.assertEqual(serializer(1-2j), error_messages['InvalidInput'])
+        self.assertEqual(serializer(("tuple", "input")), error_messages['InvalidInput'])
+
+    def test_serializer_type_error(self):
+        # TypeError : serializer() missing 1 required positional argument: 'dict'
+        self.assertRaises(TypeError, serializer, )
+    
+    #def test_serializer_syntax_error(self):  ##
+        #self.assertRaises(SyntaxError,serializer,{"val_missing"\:})
+    
+    def test_serializer_custom_error(self):
+        self.assertEqual(serializer({"key":["list","Value"]}), error_messages['dictError'])
+        
 
 if __name__ == '__main__':
     unittest.main()

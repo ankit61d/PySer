@@ -2,6 +2,11 @@
 
 delimiter = '\x00'
 
+error_messages = {
+    'InvalidInput': 'serializer takes only dict as input',
+    'dictError' : 'Unsupported Key or Value Error'
+}
+
 def get_type(inp):
     '''get_type takes input and returns the hex value mapped for that input type
     '''
@@ -16,6 +21,9 @@ def get_type(inp):
         return '\x01'
     elif isinstance(inp, complex):
         return '\x05'
+    else: # when any key or value is none of these types
+        return error_messages['dictError']
+
 
 def serializer(d):
     '''this function takes dict as input as traverse through its key-value pairs.
@@ -26,9 +34,14 @@ def serializer(d):
         bytes_string = ''
         keys = list(d.keys())
         for k in keys:
-            key_type = get_type(k) 
+            key_type = get_type(k)
             val, val_type = d[k], get_type(d[k])
-            bytes_string += str(k) + delimiter + key_type + delimiter + str(val) + delimiter + val_type + delimiter
-        return bytes_string
+            if key_type == error_messages['dictError']  or val_type == error_messages['dictError']:
+                return error_messages['dictError']
+                
+            else:
+                bytes_string += str(k) + delimiter + key_type + delimiter + str(val) + delimiter + val_type + delimiter
+                return bytes_string
     else:
-        return "Invalid Input: serializer only takes dict as input"
+        return error_messages['InvalidInput']
+print(serializer({}))
