@@ -14,7 +14,6 @@ def get_type(inp):
     elif isinstance(inp, complex):
         return '\x05'
 
-
 def serializer(d):
     bytes_string = ''
     keys = list(d.keys())

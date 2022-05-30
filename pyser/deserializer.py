@@ -1,8 +1,7 @@
 def deserializer(inp):
     hex_list = ("{:02x}".format(ord(c)) for c in inp)
     last, s = '', ''
-    key_val = [None]*2
-    d = {}
+    key_val, d = [None]*2, {}
     while True:
         try:
             n = next(hex_list)
@@ -43,4 +42,3 @@ def deserializer(inp):
                         key_val = [None]*2
             last = n
     return d
-

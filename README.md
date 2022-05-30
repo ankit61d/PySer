@@ -59,6 +59,28 @@ ankit@slim:~/PySer/examples$ python3 example2.py
 {'repo': 'PYSER', 'version': 1.0, 'is_working': True, 'description': 'Python library to (de)serialize dict to disk', 'publish_date': '30 May 2022'}
 ```
 
+## How to run Test cases
+
+To run test for serializer function, navigate to tests/serializer & simply run:
+```console
+ankit@slim:~/PySer/tests/serializer$ python3 test.py
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+```
+Similarly, navigate to test/deserializer directory & run:
+```console
+ankit@slim:~/PySer/tests/deserializer$ python3 test.py
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+```
+
+
 ## Improvements
 This was created for fun and educational purpose. Any usage other than that is not advised.
 However, there are following improvements which I am working upon:
