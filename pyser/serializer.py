@@ -3,22 +3,32 @@
 delimiter = '\x00'
 
 def get_type(inp):
-    if isinstance(inp, bool): # isinstance(True, int) returns True
+    '''get_type takes input and returns the hex value mapped for that input type
+    '''
+    # We must check for bool first as bool is subclass of int
+    if isinstance(inp, bool):
         return '\x04'
+    elif isinstance(inp, float):
+        return '\x02'
     elif isinstance(inp, str):
         return '\x03'
     elif isinstance(inp, int):
         return '\x01'
-    elif isinstance(inp, float): #when instance is float
-        return '\x02'
     elif isinstance(inp, complex):
         return '\x05'
 
 def serializer(d):
-    bytes_string = ''
-    keys = list(d.keys())
-    for k in keys:
-        key_type = get_type(k) 
-        val, val_type = d[k], get_type(d[k])
-        bytes_string += str(k) + delimiter + key_type + delimiter + str(val) + delimiter + val_type + delimiter
-    return bytes_string
+    '''this function takes dict as input as traverse through its key-value pairs.
+    it appends key, delimiter, key_type, delimiter to bytes_string
+    then in same way, for that key it appends corresponding value, delimiter, value_type and delimiter
+    '''
+    if isinstance(d, dict):
+        bytes_string = ''
+        keys = list(d.keys())
+        for k in keys:
+            key_type = get_type(k) 
+            val, val_type = d[k], get_type(d[k])
+            bytes_string += str(k) + delimiter + key_type + delimiter + str(val) + delimiter + val_type + delimiter
+        return bytes_string
+    else:
+        return "Invalid Input: serializer only takes dict as input"
