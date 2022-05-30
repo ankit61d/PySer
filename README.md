@@ -1,5 +1,5 @@
 # PySer
-Simple 🐍 Python library to Serialize / Deserializer dict.
+Simple 🐍 Python library to Serialize / Deserialize dict.
 It uses NUL byte as a delimiter and raises error if the input dict contains NUL byte.
 
 ## Guide
