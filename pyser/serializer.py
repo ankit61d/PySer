@@ -2,10 +2,19 @@
 
 delimiter = '\x00'
 
-error_messages = {
-    'InvalidInput': 'serializer takes only dict as input',
-    'dictError' : 'Unsupported Key or Value Error'
-}
+class SerializerInvalidInputError(Exception):
+    '''Error: serializer takes only dict as input
+    '''
+    pass
+
+class SerializerTypeError(Exception):
+    '''Error: key or value type is not supported
+    '''
+    pass
+class SerializerEmptyDictError(Exception):
+    '''Error: serializer doesn't take empty dict as input
+    '''
+    pass
 
 def get_type(inp):
     '''get_type takes input and returns the hex value mapped for that input type
@@ -21,8 +30,8 @@ def get_type(inp):
         return '\x01'
     elif isinstance(inp, complex):
         return '\x05'
-    else: # when any key or value is none of these types
-        return error_messages['dictError']
+    else: # when key or val type is not supported
+        raise SerializerTypeError
 
 
 def serializer(d):
@@ -31,16 +40,15 @@ def serializer(d):
     then in same way, for that key it appends corresponding value, delimiter, value_type and delimiter
     '''
     if isinstance(d, dict):
-        bytes_string = ''
-        keys = list(d.keys())
-        for k in keys:
-            key_type = get_type(k)
-            val, val_type = d[k], get_type(d[k])
-            if key_type == error_messages['dictError']  or val_type == error_messages['dictError']:
-                return error_messages['dictError']
-                
-            else:
+        if len(d) != 0:
+            bytes_string = ''
+            keys = list(d.keys())
+            for k in keys:
+                key_type = get_type(k)
+                val, val_type = d[k], get_type(d[k])
                 bytes_string += str(k) + delimiter + key_type + delimiter + str(val) + delimiter + val_type + delimiter
                 return bytes_string
-    else:
-        return error_messages['InvalidInput']
+        else: # raise error when empty dict is passed
+            raise SerializerEmptyDictError
+    else: # raise error when input is other than dict
+        raise SerializerInvalidInputError

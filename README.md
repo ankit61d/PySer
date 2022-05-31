@@ -11,8 +11,7 @@ bool
 float
 complex
 ```
-What happens if the input for serializer() is in the wrong format?
->> It returns 'InvalidInput' error message
+
 
 ### An example that uses pyser to serializer a dict and then deserialize it. 
 1. Download the package. Navigate to the package directory in terminal & open python interpreter.
@@ -76,9 +75,9 @@ OK
 Similarly, navigate to test/deserializer directory & run:
 ```console
 ankit@slim:~/PySer/tests/deserializer$ python3 test.py
-...
+..
 ----------------------------------------------------------------------
-Ran 3 tests in 0.000s
+Ran 2 tests in 0.000s
 
 OK
 ```
