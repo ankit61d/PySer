@@ -11,16 +11,15 @@ except ImportError:
 class TestDeserializer(unittest.TestCase):
 
     def test_deserializer(self):
-        self.assertEqual(deserializer(''), {})
         self.assertEqual(deserializer('my_sTRiNG\x00\x03\x00?\x00\x03\x00'), {'my_sTRiNG':"?"})
         self.assertEqual(deserializer('1238719283721837\x00\x05\x00hello\x00\x03\x00'), {(1238719283721837+0j): "hello"})
         self.assertEqual(deserializer('-90.90\x00\x03\x001a1\x00\x03\x00'), {"-90.90":"1a1"})
 
     def test_deserializer_error(self):
         self.assertRaises(DeserializerInvalidInputError, deserializer, {"string", "in", "set"})
-        self.assertRaises(DeserializerInvalidInputError, deserializer,["yo",1,2])
-        self.assertRaises(DeserializerInvalidInputError, deserializer,{})
-
+        self.assertRaises(DeserializerInvalidInputError, deserializer, ["yo",1,2])
+        self.assertRaises(DeserializerInvalidInputError, deserializer, {})
+        self.assertRaises(DeserializerInvalidInputError, deserializer, '')
 
 if __name__ == '__main__':
     unittest.main()

@@ -4,7 +4,7 @@ class DeserializerInvalidInputError(Exception):
     pass
 
 def deserializer(inp):
-    if type(inp) == str:
+    if type(inp) == str and inp != '':
         hex_list = ("{:02x}".format(ord(c)) for c in inp)
         last, s = '', ''
         key_val, d = [None]*2, {}
