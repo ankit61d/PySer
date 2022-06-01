@@ -98,7 +98,6 @@ def deserializer(input_var):
     if step in [0,4] :
         return serialized_dict
     else:
-        print(step)
         '''To get a key-value pair , Serializer function must always perform 4 step
         We increment step everytime those step are performed successfully 
         So, if step != 4, it means we failed to get a key-value pair
