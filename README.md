@@ -1,6 +1,6 @@
 # PySer
-Simple 🐍 Python library to Serialize / Deserialize dict.
-It uses NUL byte as a delimiter and raises error if the input dict contains NUL byte.
+Simple 🐍 Python library to Serialize / Deserialize dict created for fun and educational purpose.
+It uses NUL byte as a delimiter. See constants.py for other OPCODES used.
 
 ## Guide
 Pyser supports primitive types in a dictionary including:
@@ -11,7 +11,7 @@ bool
 float
 complex
 ```
-
+Moreover, Both serializer & deserializer can escape the OPCODES if they are present in the input.
 
 ### An example that uses pyser to serializer a dict and then deserialize it. 
 1. Download the package. Navigate to the package directory in terminal & open python interpreter.
@@ -35,9 +35,9 @@ ankit@slim:~/PySer$ python3
 To check how pyser serializer writes dict to a file, run example1.py in examples.
 It creates a file named sample.txt in the same directory.
 We can hexdump this file in terminal to get idea of internal working.
-### examples/example1.py
+### examples/serializer_example.py
 ```console
-ankit@slim:~/PySer/examples$ python3 example1.py
+ankit@slim:~/PySer/examples$ python3 serializer_example.py
 ankit@slim:~/PySer/examples$ hexdump -C sample.txt
 00000000  72 65 70 6f 00 03 00 50  59 53 45 52 00 03 00 76  |repo...PYSER...v|
 00000010  65 72 73 69 6f 6e 00 03  00 31 2e 30 00 02 00 69  |ersion...1.0...i|
@@ -53,11 +53,11 @@ ankit@slim:~/PySer/examples$ hexdump -C sample.txt
 
 ## Reading from a File
 Now, we read the same sample.txt created earlier by example.
-Run example2.py under examples directory. PySer deserializer reads the file and returns the original dict which was used to create sample.txt  
+Run deserializer_example.py under examples directory. PySer deserializer reads the file and returns the original dict which was used to create sample.txt  
 
-### examples/example2.py
+### examples/deserializer_example.py
 ```console
-ankit@slim:~/PySer/examples$ python3 example2.py
+ankit@slim:~/PySer/examples$ python3 deserializer_example.py
 {'repo': 'PYSER', 'version': 1.0, 'is_working': True, 'description': 'Python library to (de)serialize dict to disk', 'publish_date': '30 May 2022'}
 ```
 
@@ -75,9 +75,9 @@ OK
 Similarly, navigate to test/deserializer directory & run:
 ```console
 ankit@slim:~/PySer/tests/deserializer$ python3 test.py
-..
+...
 ----------------------------------------------------------------------
-Ran 2 tests in 0.000s
+Ran 3 tests in 0.000s
 
 OK
 ```
@@ -85,8 +85,7 @@ OK
 
 ## Improvements
 This was created for fun and educational purpose. Any usage other than that is not advised.
-However, there are following improvements which I am working upon:
-1. Raising error when NUL byte is present in dict.
-2. If any key value pair has empty string, i.e. "", it will skip the key value pair altogther.
-3. Escape characters in strings present in dict.
-4. It does not support nested dict.
+Below are improvements which can be worked upon:
+1. It does not support data types like list, tuple, set in the dict.
+2. It does not support nested dict.
+3. While deserializer does a better job at reading input because it uses generator to  calls bytes in memory one at a time. Serializer's ability to handle large files and save space can certainly be improved. 

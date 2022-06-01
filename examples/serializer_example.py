@@ -1,11 +1,8 @@
-try:
-    from pyser import *
-except ImportError:
-    import os
-    import sys
 
-    sys.path.append(os.path.abspath(os.path.join(".", "..")))
-    from pyser import *
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(".", "../pyser")))
+from serializer import serializer
 
 my_dict = {
     "repo": "PYSER",
