@@ -21,7 +21,6 @@ def deserializer(input_var):
         is_main_while_loop = True
         steps = 0
         while is_main_while_loop:
-            steps = 0
             try:
                 n = next(hex_list)
             except StopIteration:
@@ -90,7 +89,7 @@ def deserializer(input_var):
             # when all 4 steps are complete, we commit the key value pair to dictionary
             serialized_dict[key] = value
 
-        if steps != 4:
+        if steps == 4:
             return serialized_dict
         else:
             '''To get a key-value pair , Serializer function must always perform 4 steps
