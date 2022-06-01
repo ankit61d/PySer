@@ -75,9 +75,9 @@ OK
 Similarly, navigate to test/deserializer directory & run:
 ```console
 ankit@slim:~/PySer/tests/deserializer$ python3 test.py
-...
+..
 ----------------------------------------------------------------------
-Ran 3 tests in 0.000s
+Ran 2 tests in 0.000s
 
 OK
 ```
@@ -88,4 +88,4 @@ This was created for fun and educational purpose. Any usage other than that is n
 Below are improvements which can be worked upon:
 1. It does not support data types like list, tuple, set in the dict.
 2. It does not support nested dict.
-3. While deserializer does a better job at reading input because it uses generator to  calls bytes in memory one at a time. Serializer's ability to handle large files and save space can certainly be improved. 
+3. Deserializer does a better job at reading input because it uses generator to  calls bytes in memory one at a time. Serializer's ability to handle large files and save space can certainly be improved. 
