@@ -4,7 +4,7 @@ import sys
 
 sys.path.append(os.path.abspath(os.path.join(".", "..", "../pyser")))
 from deserializer import deserializer
-from exceptions import *
+
 
 class TestDeserializer(unittest.TestCase):
 

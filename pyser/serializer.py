@@ -1,6 +1,6 @@
-from constants import *
-from exceptions import *
-from utils import *
+from constants import OPCODE_DELIMITER_1 , OPCODE_STRING_DATATYPE_1
+from exceptions import SerializerEmptyDictError, SerializerInvalidInputError
+from utils import get_type, get_escaped_input_str
 
 # NUL byte \x00 is the delimiter used, raise Error if it is present in the dictionary
 

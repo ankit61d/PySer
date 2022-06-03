@@ -1,5 +1,5 @@
-from constants import *
-from exceptions import *
+from constants import OPCODES_1, OPCODE_ESCAPE_CHAR_2, OPCODE_ESCAPE_CHAR_1, OPCODE_DELIMITER_2, OPCODE_BOOL_DATATYPE_1, OPCODE_STRING_DATATYPE_1, OPCODE_FLOAT_DATATYPE_1, OPCODE_INT_DATATYPE_1, OPCODE_COMPLEX_DATATYPE_1
+from exceptions import SerializerTypeError
 
 # utility functions for SERIALIZER
 

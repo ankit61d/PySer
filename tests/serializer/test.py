@@ -4,7 +4,7 @@ import sys
 
 sys.path.append(os.path.abspath(os.path.join(".", "..", "../pyser")))
 from serializer import serializer 
-from exceptions import *
+from exceptions import SerializerTypeError, SerializerInvalidInputError, SerializerEmptyDictError
 
 class TestSerializer(unittest.TestCase):
 
